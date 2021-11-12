@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import request from "./utils/request";
 
 function App() {
-  const a = 0;
+  const fetchFc = async () => {
+    const res = await request("/api/platform/cert/query", {
+      method: "POST",
+    });
+    console.log(res, 2);
+  };
+
+  useEffect(() => {
+    fetchFc();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
